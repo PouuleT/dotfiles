@@ -1,0 +1,9 @@
+" 'C-a' to select all
+noremap <C-a> <C-v><C-a>
+
+" use letter to follow links
+set hintchars=asdfghjklyuiopqwertnmzxcvb
+
+noremap gl :tabnext<CR>
+noremap gh :tabprev<CR>
+

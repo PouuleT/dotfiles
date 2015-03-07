@@ -1,0 +1,20 @@
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%} git:(%{$fg[cyan]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$reset_color%}) %{$fg[red]%}✗"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$reset_color%}) %{$fg[green]%}✔"
+
+# Right prompt
+RPS1='%{$(echotc UP 1)%}$(git_prompt_info)%{$(echotc DO 1)%}'
+# RPS1='$(git_prompt_info)'
+# RPS1='lol'
+
+# Prompt format:
+# USER@MACHINE:DIRECTORY                     git:(BRANCH) STATE \n $
+# PROMPT="
+PS1="%{$fg_bold[green]%}➜%{$reset_color%} \
+%{$fg[cyan]%}%n\
+%{$fg[white]%}@\
+%{$fg[green]%}%M\
+%{$fg[white]%}:\
+%{$terminfo[bold]$fg[yellow]%}%~%{$reset_color%}
+%{$terminfo[bold]$fg[red]%}$ %{$reset_color%}"
