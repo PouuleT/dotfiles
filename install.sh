@@ -28,6 +28,7 @@ case ${choice} in
             .gitconfig
             .inputrc
             .oh-my-zsh
+            .functions
             .profile
             .screenrc
             .tmux.conf
