@@ -1,4 +1,3 @@
-set nocompatible "on est sous vim
 " UTF-8 powa
 set encoding=utf-8
 set fileencoding=utf-8
@@ -7,12 +6,12 @@ set termencoding=utf-8
 execute pathogen#infect()
 Helptags
 
+syntax on
 filetype plugin indent on
 
 set ls=2
-set mouse=a "ADD
-" set term=xterm
-set ttymouse=xterm2 "ADD mouse with screen
+set mouse=
+
 set showmode    " affiche le mode (insert ou autre)
 set backspace=indent,eol,start "activation de la touche backspace
 set autoindent  " autoindentation active
@@ -172,11 +171,12 @@ imap <C-Up> <C-o>:<C-u>move .-2<CR>
 vmap <C-Down> :move '>+1<CR>gv
 vmap <C-Up> :move '<-2<CR>gv
 
-syntax enable
-
 " Highlight spaces a the end of a line
-:highlight ExtraWhitespace term=standout ctermfg=67 ctermbg=16
-:match ExtraWhitespace /\s\+$/
+highlight ExtraWhitespace term=standout ctermfg=67 ctermbg=16
+match ExtraWhitespace /\s\+$/
+
+" highlight conflicts
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Choose the first spelling correction
 nnoremap z- 1z=

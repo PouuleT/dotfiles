@@ -26,7 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git rails ruby bower heroku)
+plugins=(git rails ruby bower)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshrc_ps1
