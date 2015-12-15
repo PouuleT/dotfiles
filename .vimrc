@@ -204,6 +204,7 @@ noremap <leader>e :Errors<CR>
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_args = "-R"
 let g:syntastic_go_checkers = ['go', 'gofmt', 'golint' , 'govet']
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 " Go vim
 " Go vim - :help go-settings

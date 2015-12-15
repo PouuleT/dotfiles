@@ -23,7 +23,7 @@ case ${choice} in
         # Config files
         FILES=(
             .bashrc
-            .bashrc_aliases
+            .bash_aliases
             .bashrc_ps1
             .gitconfig
             .inputrc

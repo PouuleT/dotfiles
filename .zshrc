@@ -43,5 +43,8 @@ fi
 if [ -f ~/.bin/z/z.sh ]; then
   . ~/.bin/z/z.sh
 fi
+if [ -f ~/.bash_aliases ]; then
+  . ~/.bash_aliases
+fi
 
 TERM='xterm-256color'
