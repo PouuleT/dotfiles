@@ -3,8 +3,29 @@ set encoding=utf-8
 set fileencoding=utf-8
 set termencoding=utf-8
 
-execute pathogen#infect()
-Helptags
+call plug#begin('~/.vim/plugged')
+
+Plug 'tomtom/tcomment_vim'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/AutoComplPop'
+Plug 'msanders/snipmate.vim'
+Plug 'tpope/vim-surround'
+Plug 'pangloss/vim-javascript'
+Plug 'junegunn/vim-easy-align'
+Plug 'majutsushi/tagbar'
+Plug 'tpope/vim-unimpaired'
+Plug 'robbyrussell/oh-my-zsh'
+Plug 'kien/ctrlp.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
+Plug 'tomasr/molokai'
+
+" Add plugins to &runtimepath
+call plug#end()
 
 syntax on
 filetype plugin indent on
