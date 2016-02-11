@@ -9,10 +9,10 @@ export ZSH=$HOME/.oh-my-zsh
 CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=13
+# export UPDATE_ZSH_DAYS=13
 
 COMPLETION_WAITING_DOTS="true"
 
@@ -26,7 +26,7 @@ COMPLETION_WAITING_DOTS="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
-plugins=(git rails ruby bower)
+plugins=(git rails ruby bower docker git)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.zshrc_ps1

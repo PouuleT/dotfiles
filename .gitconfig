@@ -32,6 +32,8 @@
   lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls      = ls-files
   pullall = !git pull && git submodule update --init --recursive
+  current-branch = rev-parse --abbrev-ref HEAD
+  pushbr = !git push --set-upstream origin `git current-branch`
 [push]
   default = tracking
 [core]
