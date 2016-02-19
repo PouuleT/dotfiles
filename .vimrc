@@ -22,6 +22,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rails'
+Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
 
 " Add plugins to &runtimepath
@@ -235,6 +236,9 @@ let g:go_fmt_fail_silently = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_structs = 1
+
+au FileType go nmap tgd <Plug>(go-def-tab)
 
 inoremap <Nul> <C-x><C-o>
 

@@ -25,10 +25,10 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 PATH="/sbin:/usr/sbin:$PATH"
-export PATH=$PATH:$HOME/dev/go/go/bin
-export GOROOT=$HOME/dev/go/go
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/dev/go/dependencies
+
+export PATH=$PATH:$HOME/dev/go/bin
+export GOROOT=$HOME/dev/go
+export GOPATH=$HOME/dev/go
 
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
 
