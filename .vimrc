@@ -206,9 +206,6 @@ nnoremap z- 1z=
 " To reformat text, Q => gq
 map Q gq
 
-" Toggle spell lang
-nnoremap <leader>s :let &spelllang=( &spelllang == "en" ? "fr" : "en" )<CR>
-
 " Paste like a boss
 vnoremap <leader>y "yy
 vnoremap <leader>p "yp
@@ -222,11 +219,13 @@ map <C-l> <C-w>l
 " Delete spaces at the end of the lines on save
 autocmd BufWrite * %s/\s\+$//ge
 
-noremap <leader>e :Errors<CR>
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_args = "-R"
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint' , 'govet']
+let g:syntastic_go_checkers = ['go', 'gofmt', 'golint' , 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+
+noremap <leader>e :Errors<CR>
+noremap <leader>s :SyntasticCheck<CR>
 
 " Go vim
 " Go vim - :help go-settings
@@ -235,7 +234,6 @@ let g:go_play_open_browser = 0
 let g:go_fmt_fail_silently = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
 let g:go_highlight_structs = 1
 
 au FileType go nmap tgd <Plug>(go-def-tab)
