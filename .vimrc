@@ -194,7 +194,8 @@ vmap <C-Down> :move '>+1<CR>gv
 vmap <C-Up> :move '<-2<CR>gv
 
 " Highlight spaces a the end of a line
-highlight ExtraWhitespace term=standout ctermfg=67 ctermbg=16
+highlight ExtraWhitespace term=standout ctermbg=7
+au BufNewFile,BufRead * :match ExtraWhitespace /\s\+$/
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -214,9 +215,6 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-
-" Delete spaces at the end of the lines on save
-autocmd BufWrite * %s/\s\+$//ge
 
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_args = "-R"
