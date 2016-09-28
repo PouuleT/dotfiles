@@ -195,7 +195,6 @@ vmap <C-Up> :move '<-2<CR>gv
 
 " Highlight spaces a the end of a line
 highlight ExtraWhitespace term=standout ctermfg=67 ctermbg=16
-match ExtraWhitespace /\s\+$/
 
 " highlight conflicts
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
