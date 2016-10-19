@@ -24,6 +24,7 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
+Plug 'itchyny/lightline.vim'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -161,10 +162,11 @@ hi CursorColumn cterm=NONE ctermbg=234
 let delimitMate_expand_cr = 2
 
 " Learn VIM the hard way
-map <Left>  <NOP>
-map <Right> <NOP>
-map <Up>    <NOP>
-map <Down>  <NOP>
+" Use arrows for something useful instead
+map <Left>  <C-W><
+map <Right> <C-W>>
+map <Up>    <C-W>+
+map <Down>  <C-W>-
 
 cnoreabbrev H helpgrep
 

@@ -27,7 +27,6 @@ fi
 PATH="/sbin:/usr/sbin:$PATH"
 
 export PATH=$PATH:$HOME/dev/go/bin
-export GOROOT=$HOME/dev/go
 export GOPATH=$HOME/dev/go
 
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
