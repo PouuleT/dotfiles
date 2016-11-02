@@ -26,7 +26,7 @@ if [ -d "$HOME/bin" ] ; then
 fi
 PATH="/sbin:/usr/sbin:$PATH"
 
-export PATH=$PATH:$HOME/dev/go/bin
+export PATH=$PATH:$HOME/dev/go/bin:/usr/local/go/bin
 export GOPATH=$HOME/dev/go
 
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
