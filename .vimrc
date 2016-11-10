@@ -25,6 +25,7 @@ Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
 Plug 'itchyny/lightline.vim'
+Plug 'ConradIrwin/vim-bracketed-paste'
 
 " Add plugins to &runtimepath
 call plug#end()
