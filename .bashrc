@@ -16,8 +16,10 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=20000
+HISTFILESIZE=$HISTSIZE
+# Make some commands not show up in history
+HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:* -h";
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
