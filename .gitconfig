@@ -34,6 +34,7 @@
   pullall = !git pull && git submodule update --init --recursive
   current-branch = rev-parse --abbrev-ref HEAD
   pushbr = !git push --set-upstream origin `git current-branch`
+  cpr="!f() { git fetch origin refs/pull/$1/head && git checkout FETCH_HEAD; }; f"
 [push]
   default = tracking
 [core]
