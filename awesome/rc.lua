@@ -313,6 +313,9 @@ globalkeys = awful.util.table.join(
 
     -- Lock session
     awful.key({ modkey,           }, "F1", function () awful.util.spawn("xscreensaver-command -lock" ) end),
+    -- Kill window
+    awful.key({ modkey, ""        }, "q",      function (c) c:kill()                         end,
+          {description = "close", group = "client"}),
 
     -- Multimedia keys
     awful.key({ }, "XF86AudioRaiseVolume",    function () awful.util.spawn("amixer set Master 2+") end),
