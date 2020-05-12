@@ -20,14 +20,22 @@ if [ -f "$HOME/.functions" ]; then
   . "$HOME/.functions"
 fi
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-PATH="/sbin:/usr/sbin:$PATH"
+add_path() {
+        [ -s "$1" ] || return 0
+        export PATH="$PATH:$1"
+}
 
-export PATH=$PATH:$HOME/dev/go/bin:/usr/local/go/bin
+# set PATH with custom locations
+add_path "/sbin"
+add_path "/usr/sbin"
+add_path "/usr/local/go/bin"
+add_path "$HOME/bin"
+add_path "$HOME/.local/bin"
+add_path "$HOME/dev/go/bin"
+add_path "$HOME/.cargo/bin"
+
 export GOPATH=$HOME/dev/go
+export GO111MODULES=on
 
-[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh" # This loads nvm
-
+# Loads nvm
+[ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
