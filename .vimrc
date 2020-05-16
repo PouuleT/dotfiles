@@ -22,12 +22,13 @@ Plug 'robbyrussell/oh-my-zsh'
 Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rails'
 Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
 Plug 'itchyny/lightline.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
-
+Plug 'rust-lang/rust.vim'
+Plug 'adelarsq/vim-matchit'
+Plug 'racer-rust/vim-racer'
 
 call plug#end()
 
@@ -186,6 +187,11 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
+inoremap <Nul> <C-x><C-o>
+
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " Syntastic options
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
 let g:syntastic_ruby_rubocop_args = "-R"
@@ -203,6 +209,17 @@ let g:go_fmt_fail_silently = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
+au FileType go nmap tgd <Plug>(go-def-tab)
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! w !sudo tee > /dev/null %
+" Rust vim
+let g:rustfmt_autosave = 1
+let g:racer_cmd = "~/.cargo/bin/racer"
+
+augroup Racer
+  autocmd!
+  autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
+  autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
+  autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
+  autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
+  autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
+augroup END
