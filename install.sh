@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-RM_COLORS='\033[0m'
-GREEN='\033[0;32m'
-ORANGE='\033[0;33m'
-
 # Find current script dir
 SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
@@ -14,7 +10,7 @@ done
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Read input with default value
-read -p "Install all files for '$USER' user ? (Y/n)" -n 1 choice
+read -rp "Install all files for '$USER' user ? (Y/n)" -n 1 choice
 choice=${choice:-"y"};
 
 # Yes or no ?
@@ -34,26 +30,25 @@ case ${choice} in
             .tmux.conf
             .vim
             .vimrc
-            .vimperatorrc
             .Xdefaults
             .xinitrc
             .zshrc
             .zshrc_ps1
         )
 
-        for FILE in  ${FILES[@]}
+        for FILE in "${FILES[@]}"
         do
-            if [ -f ~/${FILE} ]
+            if [ -f "$HOME/$FILE" ]
             then
-                echo "File exists : ${FILE} not linked"
-            elif [ -d ~/${FILE} ]
+                echo "File exists : $FILE not linked"
+            elif [ -d "$HOME/$FILE" ]
             then
                 echo "Folder exists: ${FILE} not linked"
             else
-                ORIGINAL_FILE="${DIR}/${FILE}"
-                SYMBOLIC_LINK="${HOME}/${FILE}"
-                `ln -s "${ORIGINAL_FILE}" "${SYMBOLIC_LINK}"`
-                echo "${FILE} linked"
+                ORIGINAL_FILE="$DIR/$FILE"
+                SYMBOLIC_LINK="$HOME/$FILE"
+                ln -s "$ORIGINAL_FILE" "$SYMBOLIC_LINK"
+                echo "$FILE linked"
             fi
         done
         ;;
