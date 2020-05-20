@@ -34,12 +34,6 @@ if [ -f ~/.profile ]; then
   source ~/.profile
 fi
 
-export EDITOR='vim'
-if [ -d ~/.rbenv/bin ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 if [ -f ~/.bin/z/z.sh ]; then
   . ~/.bin/z/z.sh
 fi

@@ -33,9 +33,12 @@ add_path "$HOME/bin"
 add_path "$HOME/.local/bin"
 add_path "$HOME/dev/go/bin"
 add_path "$HOME/.cargo/bin"
+add_path "$HOME/.rbenv/bin" && eval "$(rbenv init -)"
 
 export GOPATH=$HOME/dev/go
 export GO111MODULES=on
+
+export EDITOR='vim'
 
 # Loads nvm
 [ -s "$HOME/.nvm/nvm.sh" ] && . "$HOME/.nvm/nvm.sh"
