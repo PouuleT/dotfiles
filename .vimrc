@@ -9,7 +9,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tomtom/tcomment_vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'msanders/snipmate.vim'
@@ -29,6 +28,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'rust-lang/rust.vim'
 Plug 'adelarsq/vim-matchit'
 Plug 'racer-rust/vim-racer'
+Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -192,34 +192,15 @@ inoremap <Nul> <C-x><C-o>
 " Allow saving of files as sudo when I forgot to start vim using sudo.
 cmap w!! w !sudo tee > /dev/null %
 
-" Syntastic options
-let g:syntastic_ruby_checkers = ['mri', 'rubocop']
-let g:syntastic_ruby_rubocop_args = "-R"
-let g:syntastic_go_checkers = ['go', 'gofmt', 'golint' , 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+noremap <leader>s :ALELint<CR>
 
-noremap <leader>e :Errors<CR>
-noremap <leader>s :SyntasticCheck<CR>
+autocmd BufNewFile,BufRead OTKfile set filetype=sh
 
-" Go vim
-" Go vim - :help go-settings
-let g:go_fmt_command = "goimports"
-let g:go_play_open_browser = 0
-let g:go_fmt_fail_silently = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-au FileType go nmap tgd <Plug>(go-def-tab)
-
-" Rust vim
-let g:rustfmt_autosave = 1
-let g:racer_cmd = "~/.cargo/bin/racer"
-
-augroup Racer
-  autocmd!
-  autocmd FileType rust nmap <buffer> gd         <Plug>(rust-def)
-  autocmd FileType rust nmap <buffer> gs         <Plug>(rust-def-split)
-  autocmd FileType rust nmap <buffer> gx         <Plug>(rust-def-vertical)
-  autocmd FileType rust nmap <buffer> gt         <Plug>(rust-def-tab)
-  autocmd FileType rust nmap <buffer> <leader>gd <Plug>(rust-doc)
-augroup END
+" Ale
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_fix_on_save = 0
+let g:ale_lint_on_save = 0
