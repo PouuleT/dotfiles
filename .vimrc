@@ -28,6 +28,8 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'rust-lang/rust.vim'
 Plug 'adelarsq/vim-matchit'
 Plug 'racer-rust/vim-racer'
+Plug 'rhysd/vim-clang-format'
+Plug 'ziglang/zig.vim'
 Plug 'dense-analysis/ale'
 
 call plug#end()
