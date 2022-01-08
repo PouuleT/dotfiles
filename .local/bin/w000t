@@ -1,0 +1,22 @@
+#!/bin/sh
+
+set -e
+
+TOKEN=$(cat "$HOME/.local/etc/w000t/token")
+URL=$(xclip -o)
+
+response=$(curl -vvv \
+        --silent \
+        --show-error \
+        --max-time 10 \
+        -H "Content-Type: application/json" \
+        -d '{ "w000t":{ "long_url":"'$URL'" }, "token":"'$TOKEN'"}' \
+        https://w000t.me/w000ts.text
+)
+
+if [ -n "$response" ]; then
+        echo $response | xclip -i
+        notify-send "w000t" "$response"
+else
+        notify-send "Failed to get the w000t"
+fi
