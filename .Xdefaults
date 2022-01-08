@@ -3,6 +3,8 @@ urxvt*foreground: white
 urxvt*background: black
 
 URxvt.font: xft:DejaVu Sans Mono:pixelsize=12
+urxvt.perl-ext-common: default,tabbed,matcher,resize-font,-tabbed
+
 
 URxvt*buffered:     true
 URxvt*cursorBlink:  false
