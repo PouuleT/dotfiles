@@ -34,6 +34,9 @@ case ${choice} in
             .xinitrc
             .zshrc
             .zshrc_ps1
+            .config/i3
+            .config/i3status
+            .local/bin
         )
 
         for FILE in "${FILES[@]}"
