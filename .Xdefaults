@@ -1,24 +1,3 @@
-URxvt*termName: xterm-256color
-urxvt*foreground: white
-urxvt*background: black
-
-URxvt.font: xft:DejaVu Sans Mono:pixelsize=12
-urxvt.perl-ext-common: default,tabbed,matcher,resize-font,-tabbed
-
-
-URxvt*buffered:     true
-URxvt*cursorBlink:  false
-URxvt*cursorUnderlline:     false
-URxvt*geometry:             80x40
-URxvt*internalBorder:       3
-URxvt*depth:                24
-URxvt*scrollBar:            false
-URxvt*scrollstyle:          plain
-URxvt*scrollColor:          #2873a2
-URxvt*scrollWithBuffer:     false
-URxvt*scrollTtyOutput:      true
-URxvt*pointerBlank:         true
-
 *color0:  #2E3436
 *color1:  #a40000
 *color2:  #4E9A06
@@ -35,6 +14,3 @@ URxvt*pointerBlank:         true
 *color13: #AD7FA8
 *color14: #fcaf3e
 *color15: #EEEEEC
-
-urxvt*transparent: true
-urxvt*shading: 15
