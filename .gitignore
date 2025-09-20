@@ -1,4 +1,2 @@
-.vim/.netrwhist
 .vim/plugged/
-.vim/view/
-.xscreensaver
+.vim/autoload/
