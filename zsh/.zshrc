@@ -7,3 +7,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 source "$HOME/.oh-my-zsh/oh-my-zsh.sh"
 source "$HOME/.zshrc_ps1"
+
+if [ -f "$HOME/.shell" ]; then
+	source "$HOME/.shell"
+fi
