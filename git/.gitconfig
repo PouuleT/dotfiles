@@ -27,7 +27,8 @@
   co      = checkout
   df      = diff
   dc      = diff --cached
-  lg      = log --graph --date-order --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit
+  l       = log --graph --date-order --pretty=format:'%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit
+  la      = !git l --all
   lol     = log --graph --decorate --pretty=oneline --abbrev-commit
   lola    = log --graph --decorate --pretty=oneline --abbrev-commit --all
   ls      = ls-files

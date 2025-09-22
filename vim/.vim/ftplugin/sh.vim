@@ -1,4 +1,8 @@
-setlocal noexpandtab     " use tabs instead of spaces
-setlocal shiftwidth=4    " autoindent with 4 tabs
-setlocal softtabstop=4   " 4 spaces to represent a tab
-setlocal tabstop=4       " use 4 spaces
+setlocal noexpandtab
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal tabstop=4
+
+let g:ale_sh_shellcheck_exclusions = ''
+let g:ale_sh_shellcheck_executable = 'shellcheck'
+let g:ale_sh_shellcheck_options = ''

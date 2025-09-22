@@ -1,36 +1,46 @@
 " UTF-8 powa
 set encoding=utf-8
 set fileencoding=utf-8
-set termencoding=utf-8
 
 " Plugins
 call plug#begin('~/.vim/plugged')
 
 Plug 'tomtom/tcomment_vim'
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/AutoComplPop'
 Plug 'msanders/snipmate.vim'
 Plug 'tpope/vim-surround'
-Plug 'pangloss/vim-javascript'
 Plug 'junegunn/vim-easy-align'
 Plug 'majutsushi/tagbar'
-Plug 'tpope/vim-unimpaired'
-Plug 'robbyrussell/oh-my-zsh'
-Plug 'kien/ctrlp.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-rails'
-Plug 'fatih/vim-go'
 Plug 'tomasr/molokai'
 Plug 'itchyny/lightline.vim'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'rust-lang/rust.vim'
-Plug 'adelarsq/vim-matchit'
-Plug 'racer-rust/vim-racer'
-Plug 'rhysd/vim-clang-format'
-Plug 'ziglang/zig.vim'
 Plug 'dense-analysis/ale'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+
+Plug 'junegunn/fzf' , { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+Plug 'nvim-tree/nvim-tree.lua'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'hrsh7th/nvim-cmp'
+
+Plug 'olimorris/codecompanion.nvim'
+
+Plug 'rust-lang/rust.vim',      { 'for': 'rust' }
+Plug 'racer-rust/vim-racer',    { 'for': 'rust' }
+Plug 'ziglang/zig.vim',         { 'for': 'zig' }
+Plug 'rhysd/vim-clang-format',  { 'for': 'c' }
+Plug 'fatih/vim-go',            { 'for': 'go' }
+Plug 'tpope/vim-rails',         { 'for': 'rails' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 
 call plug#end()
 
@@ -50,7 +60,6 @@ set ls=2
 set mouse=
 
 set showmode    " show mode (insert or other)
-" set backspace=indent,eol,start "activation de la touche backspace
 set autoindent  " autoindentation active
 set showmatch   " match : highlight matching parentehis / brackets ,...
 set ruler       " show cursor coordinates
@@ -58,7 +67,7 @@ set hlsearch    " highlight colorisation
 
 set nobackup    " no backup file
 
-set expandtab  "convert tabs into spaces
+set expandtab   "convert tabs into spaces
 set directory=/tmp " directory for swap files
 
 " Easy qwerty
@@ -74,9 +83,6 @@ set timeoutlen=500
 nnoremap gl    :tabnext<CR>
 nnoremap gh    :tabprev<CR>
 
-" Enable pasteMode
-set pastetoggle=<F12>
-
 " Visual shifting (does not exit Visual mode)
 vnoremap < <gv
 vnoremap > >gv
@@ -87,20 +93,10 @@ noremap Y y$
 " Disable highlighting when searching by hitting Enter
 nnoremap <cr> :noh<CR><CR>:<backspace>
 
-" Number of colors
-set t_Co=256
 colorscheme molokai
 
-" Options for the NERDTree
-let NERDTreeChDirMode=2
-let NERDTreeShowHidden=1
-let NERDTreeDirArrows=0
-let NERDTreeShowBookmarks=1
-
 " Open NERDTree Tabs quick toogle
-nmap <leader>t :NERDTreeTabsToggle<CR>
-" Open NERTree if vim starts with no file
-autocmd vimenter * if !argc() | let g:nerdtree_tabs_open_on_console_startup=1 | endif
+nmap <leader>t :NvimTreeToggle<CR>
 
 " Activate or desactivate the line numbers
 nmap <leader>n :set nu! nu?<CR>
@@ -118,7 +114,6 @@ nmap <leader>l :set cursorline! cursorline?<CR>
 
 " Options for EasyAlign in Visual Mode
 vmap <Enter> <Plug>(EasyAlign)
-nmap <Leader>a <Plug>(EasyAlign)
 
 " Search visual selection
 vnoremap <leader>* "yy/<C-R>y<CR>
@@ -126,13 +121,6 @@ vnoremap <leader># "yy?<C-R>y<CR>
 
 " To avoid having the cursor on the top of the screen
 set scrolloff=10
-
-if !exists("Vimrc_update()")
-  function! Viimrc_update()
-    source $MYVIMRC
-    echom 'vimrc reloaded'
-  endfunction
-endif
 
 " <space> toggles folds opened and closed
 nnoremap <space> za
@@ -150,19 +138,11 @@ map <Right> <C-W>>
 map <Up>    <C-W>+
 map <Down>  <C-W>-
 
-cnoreabbrev H helpgrep
+" More natural splits
+set splitright
+set splitbelow
 
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-    \ 'file': '\v\.(exe|so|dll)$',
-    \ }
-let g:ctrlp_user_command = {
-    \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files'],
-        \ 2: ['.svn', 'cd %s && svn ls -R'],
-        \ },
-    \ 'fallback': 'find %s -type f'
-    \ }
+cnoreabbrev H helpgrep
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
@@ -170,7 +150,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 set wildmenu
 
 " Highlight spaces a the end of a line
-highlight ExtraWhitespace term=standout ctermbg=7
+highlight ExtraWhitespace ctermfg=9 ctermbg=9 guifg=Red guibg=Red
 au BufNewFile,BufRead * :match ExtraWhitespace /\s\+$/
 
 " Highlight conflicts
@@ -179,7 +159,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " To reformat text, Q => gq
 map Q gq
 
-" Paste like a boss
+" Better paste
 vnoremap <leader>y "yy
 vnoremap <leader>p "yp
 
@@ -196,13 +176,21 @@ cmap w!! w !sudo tee > /dev/null %
 
 noremap <leader>s :ALELint<CR>
 
-autocmd BufNewFile,BufRead OTKfile set filetype=sh
-
 " Ale
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 0
+let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity%]'
 let g:ale_lint_on_insert_leave = 0
 let g:ale_fix_on_save = 0
 let g:ale_lint_on_save = 0
+nnoremap gd :ALEGoToDefinition<CR>
+noremap <leader>s :ALELint<CR>
+
+" Move between errors
+nmap ]e :ALENext<cr>
+nmap [e :ALEPrevious<cr>
+
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-g> :GFiles<CR>
+nnoremap <silent> <C-n> :Buffers<CR>
