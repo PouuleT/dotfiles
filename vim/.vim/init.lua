@@ -94,6 +94,7 @@ require("codecompanion").setup({
     http = {
       opts = {
         show_defaults = false,
+        show_model_choices = true,
       },
       ovhai = function()
         return require("codecompanion.adapters").extend("openai_compatible", {
