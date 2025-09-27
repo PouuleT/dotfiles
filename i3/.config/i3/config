@@ -192,6 +192,19 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
+        workspace_min_width 44
+        padding 0px 20px 10px 20px
+
+        colors {
+                background #141c21
+                statusline #93a1a1
+
+                # colour of border, background, and text
+                focused_workspace #141c21 #d12f2c #141c21
+                active_workspace #141c21 #141c21 #bfbaac
+                inactive_workspace #141c21 #141c21 #bfbaac
+                urgent_workspace #141c21 #b08500 #bfbaac
+        }
 }
 
 # rofi

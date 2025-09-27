@@ -8,6 +8,8 @@
 
 general {
         colors = true
+        output_format = "i3bar"
+        markup = pango
         interval = 5
 }
 
